@@ -7,7 +7,11 @@
 
 <body>
 <h1>Detail of person:</h1>
-<div>TODO: implement show details </div>
+<div>
+    <p th:text="'Id: ' + ${id}">Id: 00</p>
+    <p th:text="'Name: ' + ${firstName}">name: n</p>
+    <p th:text="'Surname: ' + ${lastName}">surname: s</p>
+</div>
 
 <a href=""> edit </a><br>
 <a href=""> delete </a><br>

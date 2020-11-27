@@ -58,6 +58,7 @@ public class AppController {
 
         model.addAttribute("firstName", actualPerson.getFirstName());
         model.addAttribute("lastName", actualPerson.getLastName());
+        model.addAttribute("id", actualPerson.getId());
         return "show";
     }
 
