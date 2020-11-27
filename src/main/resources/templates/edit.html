@@ -9,7 +9,11 @@
 <h1>Edit a record</h1>
 
 <form action="update" method="post">
-    <div>TODO: display all the data in text fields</div>
+    <div>
+        <p th:text="'Id: ' + ${id}"></p>
+        <p>Name: <input type="text" name="firstName" th:value="${firstName}"></p>
+        <p>Surname: <input type="text" name="lastName" th:value="${lastName}"></p>
+    </div>
     <input type="submit" />
 </form>
 

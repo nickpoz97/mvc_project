@@ -70,9 +70,14 @@ public class AppController {
             Model model) {
         Optional<Person> result = repository.findById(id);
         //TODO: check if the result is found
-        //TODO: put data in the model field to be displayed in the next page to edit them
+        if(!result.isPresent()){
+            return "notfound";
+        }
+        Person actualPerson = result.get();
+        model.addAttribute("firstName", actualPerson.getFirstName());
+        model.addAttribute("lastName", actualPerson.getLastName());
+        model.addAttribute("id", actualPerson.getId());
         return "edit";
-        //TODO: in case no data is found, display the "notfound" page
     }
 
     @RequestMapping("/update")
