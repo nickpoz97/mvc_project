@@ -51,10 +51,14 @@ public class AppController {
             @RequestParam(name="id", required=true) Long id,
             Model model) {
         Optional<Person> result = repository.findById(id);
-        //TODO: check if the result is found,
-        //TODO: put data in the model field to be displayed in the page
+        if(!result.isPresent()) {
+            return "notfound";
+        }
+        Person actualPerson = result.get();
+
+        model.addAttribute("firstName", actualPerson.getFirstName());
+        model.addAttribute("lastName", actualPerson.getLastName());
         return "show";
-        //TODO: in case no data is found, display the "notfound" page
     }
 
 
