@@ -8,9 +8,9 @@
 <body>
 <h1>Edit a record</h1>
 
-<form action="update" method="post">
+<form th:action="update" method="post">
     <div>
-        <p th:text="'Id: ' + ${id}"></p>
+        <p>Id:  <input type="text" name="id" th:value="${id}" disabled>
         <p>Name: <input type="text" name="firstName" th:value="${firstName}"></p>
         <p>Surname: <input type="text" name="lastName" th:value="${lastName}"></p>
     </div>

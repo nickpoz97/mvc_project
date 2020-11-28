@@ -86,10 +86,17 @@ public class AppController {
             @RequestParam(name="firstname", required=true) String firstname,
             @RequestParam(name="lastname", required=true) String lastname,
             Model model) {
-        //TODO: check if the result is found
-        //TODO: delete the old person and add a new person
+
+        Optional<Person> result = repository.findById(id);
+        if(!result.isPresent()){
+            return "notfound";
+        }
+        Person actualPerson = result.get();
+        repository.delete(actualPerson);
+        Person editedPerson = new Person(firstname, lastname);
+        repository.save(editedPerson);
+
         return "redirect:/list";
-        //TODO: in case no data is found, display the "notfound" page
     }
 
 
