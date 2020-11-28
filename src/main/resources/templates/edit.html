@@ -8,11 +8,11 @@
 <body>
 <h1>Edit a record</h1>
 
-<form th:action="update" method="post">
+<form action="update", method="post">
     <div>
-        <p>Id:  <input type="text" name="id" th:value="${id}" disabled>
-        <p>Name: <input type="text" name="firstName" th:value="${firstName}"></p>
-        <p>Surname: <input type="text" name="lastName" th:value="${lastName}"></p>
+        <p>Name: <input type="text" name="firstname" th:value="${firstName}"/></p>
+        <p>Surname: <input type="text" name="lastname" th:value="${lastName}"/></p>
+        <input type="hidden" name="id" th:value="${id}" />
     </div>
     <input type="submit" />
 </form>

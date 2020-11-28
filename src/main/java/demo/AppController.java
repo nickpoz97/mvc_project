@@ -18,7 +18,7 @@ public class AppController {
 
     @RequestMapping("/")
     public String index(){
-        return "list";
+        return "redirect:list";
     }
 
     @RequestMapping("/list")
@@ -92,9 +92,9 @@ public class AppController {
             return "notfound";
         }
         Person actualPerson = result.get();
-        repository.delete(actualPerson);
-        Person editedPerson = new Person(firstname, lastname);
-        repository.save(editedPerson);
+        actualPerson.setFirstName(firstname);
+        actualPerson.setLastName(lastname);
+        repository.save(actualPerson);
 
         return "redirect:/list";
     }
@@ -103,10 +103,12 @@ public class AppController {
     @RequestMapping("/delete")
     public String delete(
             @RequestParam(name="id", required=true) Long id) {
-        //TODO: check if the result is found
-        //TODO: delete the old person and add a new person
+        Optional<Person>result = repository.findById(id);
+        if(!result.isPresent()){
+            return "notfound";
+        }
+        repository.delete(result.get());
         return "redirect:/list";
-        //TODO: in case no data is found, display the "notfound" page
     }
 
 }
