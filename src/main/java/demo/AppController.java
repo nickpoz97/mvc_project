@@ -92,6 +92,7 @@ public class AppController {
             return "notfound";
         }
         Person actualPerson = result.get();
+        // I used setters to not create a new instance (and Id) for class Person
         actualPerson.setFirstName(firstname);
         actualPerson.setLastName(lastname);
         repository.save(actualPerson);
