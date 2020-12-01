@@ -40,6 +40,7 @@ public class Person {
         return lastName;
     }
 
+    // below methods are use to edit the person
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
